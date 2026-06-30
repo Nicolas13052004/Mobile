@@ -5,7 +5,7 @@ import 'storage_service.dart';
 
 class MessageService {
   // Ajuste l'adresse IP ou le port si nécessaire selon ta configuration Backend
-  final String baseUrl = "http://localhost:3000/api/v1/messages"; 
+  final String baseUrl = "http://mobile-sofm.onrender.com/api/v1/messages"; 
 
   // Récupérer l'historique des messages (envoyés et reçus)
   Future<List<Message>> getMessagesEnvoyes(String email) async {

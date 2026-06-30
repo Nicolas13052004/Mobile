@@ -4,7 +4,7 @@ import '../../models/message_parent.dart';
 import 'storage_service.dart';
 
 class MessageParentService {
-  final String baseUrl = "http://localhost:3000/api/v1/messages"; 
+  final String baseUrl = "http://mobile-sofm.onrender.com/api/v1/messages"; 
 
   // Récupérer les messages envoyés
   Future<List<MessageParent>> getMessages() async {
