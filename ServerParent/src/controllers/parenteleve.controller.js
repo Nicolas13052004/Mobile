@@ -1,4 +1,4 @@
-const parentEleveService = require('../services/parenteleve.service');
+const parentEleveService = require('../services/parentEleve.service');
 
 const getAll = async (req, res) => {
   try {
