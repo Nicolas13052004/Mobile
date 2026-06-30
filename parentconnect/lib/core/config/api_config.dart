@@ -1,4 +1,4 @@
 class ApiConfig {
   static const String baseUrl =
-      "http://localhost:3000/api/v1";
+      "http://192.168.10.132:3000/api/v1";
 }
