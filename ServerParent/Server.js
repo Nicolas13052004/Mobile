@@ -5,40 +5,53 @@ const { sequelize } = require("./src/models");
 const routes = require("./src/routes");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// 🔥 API VERSIONING PROPRE
+// Routes API
 app.use("/api/v1", routes);
 
-// test route
+// Route de test
 app.get("/", (req, res) => {
-  res.json({
+  res.status(200).json({
+    success: true,
     message: "ParentConnect API running 🚀",
   });
 });
 
-// 🔥 GLOBAL ERROR HANDLER (IMPORTANT)
+// Gestion globale des erreurs
 app.use((err, req, res, next) => {
-  console.error(err);
+  console.error("Erreur :", err);
+
   res.status(500).json({
-    message: "Erreur serveur",
+    success: false,
+    message: "Erreur interne du serveur",
   });
 });
 
+// Démarrage du serveur
 async function startServer() {
   try {
+    // Vérification de la connexion PostgreSQL
     await sequelize.authenticate();
     console.log("✅ PostgreSQL connecté");
 
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
+    // Démarrage du serveur
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log("====================================");
+      console.log(`🚀 Serveur démarré`);
+      console.log(`🌐 Local    : http://localhost:${PORT}`);
+      console.log(`📱 Réseau   : http://192.168.10.132:${PORT}`);
+      console.log("====================================");
     });
 
   } catch (error) {
-    console.error("❌ Erreur DB :", error);
+    console.error("❌ Impossible de démarrer le serveur");
+    console.error(error);
+    process.exit(1);
   }
 }
 

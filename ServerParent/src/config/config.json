@@ -1,9 +1,17 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "1305",
-    "database": "Pconnect2",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "username": "neondb_owner",
+    "password": "npg_qb7o0utaUlfW",
+    "database": "neondb",
+    "host": "ep-green-credit-atchmbpn-pooler.c-9.us-east-1.aws.neon.tech",
+    "port": 5432,
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "logging": false
   }
 }
